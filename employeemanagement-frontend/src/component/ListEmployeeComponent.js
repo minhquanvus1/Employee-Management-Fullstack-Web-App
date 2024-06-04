@@ -25,7 +25,7 @@ const ListEmployeeComponent = () => {
   function deleteEmployee(e, id) {
     e.preventDefault();
     EmployeeService.deleteEmployee(id)
-      .then(getAllEmployee())
+      .then(() => getAllEmployee())
       .catch((e) => console.log(e));
   }
 
@@ -44,29 +44,31 @@ const ListEmployeeComponent = () => {
           <th>Actions</th>
         </thead>
         <tbody>
-          {employeeArray.map((employee) => (
-            <tr id={employee.id}>
-              <td>{employee.id}</td>
-              <td>{employee.firstName}</td>
-              <td>{employee.lastName}</td>
-              <td>{employee.email}</td>
-              <td>
-                <Link
-                  to={`/add-employee/${employee.id}`}
-                  className="btn btn-info"
-                  href=""
-                >
-                  Update
-                </Link>{" "}
-                <a
-                  onClick={(e) => deleteEmployee(e, employee.id)}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </a>
-              </td>
-            </tr>
-          ))}
+          {employeeArray
+            .sort((a, b) => a.id - b.id)
+            .map((employee) => (
+              <tr id={employee.id}>
+                <td>{employee.id}</td>
+                <td>{employee.firstName}</td>
+                <td>{employee.lastName}</td>
+                <td>{employee.email}</td>
+                <td>
+                  <Link
+                    to={`/add-employee/${employee.id}`}
+                    className="btn btn-info"
+                    href=""
+                  >
+                    Update
+                  </Link>{" "}
+                  <a
+                    onClick={(e) => deleteEmployee(e, employee.id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </a>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
