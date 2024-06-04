@@ -47,7 +47,7 @@ const ListEmployeeComponent = () => {
           {employeeArray
             .sort((a, b) => a.id - b.id)
             .map((employee) => (
-              <tr id={employee.id}>
+              <tr key={employee.id} id={employee.id}>
                 <td>{employee.id}</td>
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
