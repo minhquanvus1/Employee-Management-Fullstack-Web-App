@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8084/employee";
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_PROD_BASE_URL
+    : process.env.REACT_APP_DEV_BASE_URL;
 class EmployeeService {
   //**Method to get all employee from our api or database */
   getAllEmployee() {
