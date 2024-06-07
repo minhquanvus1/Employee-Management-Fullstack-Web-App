@@ -7,11 +7,12 @@ const BASE_URL =
 class EmployeeService {
   //**Method to get all employee from our api or database */
   getAllEmployee() {
+    console.log("base url is", BASE_URL);
     return axios.get(BASE_URL);
   }
   /**MEthod to save employee */
   saveEmployee(employeeData) {
-    return axios.post(BASE_URL, employeeData);
+    return axios.post(`${BASE_URL}`, employeeData);
   }
   updateEmployee(id, employeeData) {
     return axios.put(`${BASE_URL}/${id}`, employeeData);
@@ -20,7 +21,7 @@ class EmployeeService {
     return axios.get(`${BASE_URL}/${id}`);
   }
   deleteEmployee(id) {
-    return axios.delete(BASE_URL + "/" + id);
+    return axios.delete(`${BASE_URL}` + "/" + id);
   }
 }
 export default new EmployeeService();
