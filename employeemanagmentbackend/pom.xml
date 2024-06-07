@@ -43,9 +43,9 @@
 			<activation>
 			<activeByDefault>true</activeByDefault>
 			</activation>
-<!--			<properties>-->
-<!--				<spring.profiles.active>development</spring.profiles.active>-->
-<!--			</properties>-->
+			<properties>
+				<spring.profiles.active>development</spring.profiles.active>
+			</properties>
 		</profile>
 		<profile>
 			<id>production</id>
@@ -68,6 +68,12 @@
 <!--				</configuration>-->
 <!--			</plugin>-->
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 
 </project>
